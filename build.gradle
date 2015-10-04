@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'com.greenhouseci.launchpad.GHLaunchpad'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.squareup.okhttp:okhttp:2.5.0'
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
+    compile 'com.squareup.retrofit:converter-simplexml:2.0.0-beta1'
+    compile 'org.simpleframework:simple-xml:2.7.1'
+    compile fileTree(dir: 'libs', includes: ['*.jar'])
+}
+
+run {
+    if (project.hasProperty('execargs')) {
+        args execargs.split()
+    }
+}
